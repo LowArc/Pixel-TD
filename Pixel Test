@@ -65,11 +65,12 @@ spawn(function ()
 end) --## สำรอง
 
 spawn(function ()
+    warn("???A?D?ADW?D?AD")
     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
     wait(5)
     warn("Dahella")
-    while task.wait(.1) do
+    repeat
         pcall(function ()
             local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
             local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
@@ -80,5 +81,5 @@ spawn(function ()
                 warn("???")
             end
         end)
-    end
+    until _G.AutoFarm == false
 end)
