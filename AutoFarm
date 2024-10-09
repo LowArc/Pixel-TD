@@ -62,6 +62,7 @@ spawn(function ()
         if ResultsGUI.Visible == true then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
         end
+        print("WORKING...")
         if ButtonGUI then
             ButtonGUI:Destroy()
         end
