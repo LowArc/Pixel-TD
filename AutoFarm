@@ -1,8 +1,7 @@
 print("Welcome to Arc Hub!!!")
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
-local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
-ButtonGUI:Destroy()
+warn("#0")
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
         warn("#1")
@@ -61,8 +60,12 @@ end) --## สำรอง
 spawn(function ()
     while task.wait(.5) do
         local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
+        local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
         if ResultsGUI.Visible == true then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
+        end
+        if ButtonGUI then
+            ButtonGUI:Destroy()
         end
     end
 end)
