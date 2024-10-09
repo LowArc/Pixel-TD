@@ -1,3 +1,4 @@
+print("Welcome to Arc Hub!!!")
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
         warn("#1")
@@ -41,6 +42,9 @@ spawn(function ()
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
                     end
+                else
+                    warn("#3")
+                    wait(1)
                 repeat
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(workspace:WaitForChild("Game"):WaitForChild("Map"):WaitForChild("PlacedUnits"):WaitForChild("Lord1"))
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(workspace:WaitForChild("Game"):WaitForChild("Map"):WaitForChild("PlacedUnits"):WaitForChild("Lord2"))
