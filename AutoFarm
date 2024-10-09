@@ -44,5 +44,7 @@ while wait() do
                 end
             end
         end)
+    elseif Wave == "WAVE 0/20" or Wave == "WAVE 1/20" then
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
     end
 end
