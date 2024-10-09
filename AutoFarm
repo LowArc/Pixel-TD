@@ -15,6 +15,7 @@ spawn(function ()
             wait(1)
         else
             warn("????")
+            task.wait(1)
         end
     end
     while game:GetService("RunService").RenderStepped:Wait() do
