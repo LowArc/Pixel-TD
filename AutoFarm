@@ -5,7 +5,7 @@ local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.
 ButtonGUI:Destroy()
 local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
 while wait() do
-    if Wave == "WAVE 0/40" or Wave == "Wave 1/40" then
+    if Wave == "WAVE 0/40" or Wave == "WAVE 1/40" then
         warn("Test1")
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
