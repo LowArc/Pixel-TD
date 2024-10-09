@@ -4,7 +4,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Ind
 local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
 ButtonGUI:Destroy()
 spawn(function ()
-    while true do
+    while game:GetService("RunService").RenderStepped:Wait() do
         warn("#1")
         wait(1)
         local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
@@ -55,3 +55,12 @@ spawn(function ()
         end
     end
 end) --## สำรอง
+
+spawn(function ()
+    while task.wait(.5) do
+        local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
+        if ResultsGUI.Visible == true then
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
+        end
+    end
+end)
