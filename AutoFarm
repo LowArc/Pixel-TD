@@ -6,10 +6,12 @@ ButtonGUI:Destroy()
 local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
 while wait() do
     if Wave == "WAVE 0/40" or Wave == "Wave 1/40" then
+        warn("Test1")
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
         spawn(function ()
             while game:GetService("RunService").RenderStepped:Wait() do
+                warn(Test 2)
                 if _G.AutoFarm then
                     pcall(function ()
                         local money = game.Players.LocalPlayer.leaderstats.Money.Value
