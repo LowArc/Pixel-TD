@@ -3,6 +3,8 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Ind
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
+local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
+ButtonGUI:Destroy()
 
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
@@ -24,14 +26,14 @@ spawn(function ()
                     end
                 if not PlacedUnits:FindFirstChild "Lord2" then
                     if money >= _G.StarterUnitCost then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13205.0479, 588.547302, 2912.19604, 0.604914308, -0.219974771, 0.765303731, 0.341751218, 0.939790487, 0, -0.719225168, 0.261543483, 0.643669307))
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13197.624, 588.611877, 2912.52368, 0.8686589, -0.268707424, 0.416206658, 0.295519948, 0.955336571, 0, -0.397617429, 0.122997373, 0.909270048))
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
                     end
                 repeat
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(workspace:WaitForChild("Game"):WaitForChild("Map"):WaitForChild("PlacedUnits"):WaitForChild("Lord1"))
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(workspace:WaitForChild("Game"):WaitForChild("Map"):WaitForChild("PlacedUnits"):WaitForChild("Lord2"))
-                    wait(1)
+                    wait(2)
                 until _G.AutoFarm == false
                 end
                 end
