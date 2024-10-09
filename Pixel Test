@@ -1,13 +1,13 @@
 print("Welcome to Arc Hub!!!")
-local canStartWave = "Medium"
-if __G.Difficulty == "Hard" then
-    canStartWave = "WAVE 0/40"
-elseif __G.Difficulty == "Medium" then
-    canStartWave = "WAVE 0/30"
-elseif __G.Difficulty == "Easy" then
-    canStartWave = "WAVE 0/20"
-elseif __G.Difficulty == "Nightmare" then
-    canStartWave = "WAVE 0/50"
+local canStartWave = nil
+if _G.Difficulty == "Hard" then
+    canStartWave = "WAVE 1/40" or "WAVE 0/40"
+elseif _G.Difficulty == "Medium" then
+    canStartWave = "WAVE 1/30" or "WAVE 0/30"
+elseif _G.Difficulty == "Easy" then
+    canStartWave = "WAVE 1/20" or "WAVE 0/20"
+elseif _G.Difficulty == "Nightmare" then
+    canStartWave = "WAVE 1/50" or "WAVE 0/50"
 end
 
 spawn(function ()
