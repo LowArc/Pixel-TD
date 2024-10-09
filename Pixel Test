@@ -1,4 +1,15 @@
 print("Welcome to Arc Hub!!!")
+local canStartWave = nil
+if __G.Difficulty == "Hard" then
+    canStartWave = "WAVE 1/40" or "WAVE 0/40"
+elseif __G.Difficulty == "Medium" then
+    canStartWave = "WAVE 1/30" or "WAVE 0/30"
+elseif __G.Difficulty == "Easy" then
+    canStartWave = "WAVE 1/20" or "WAVE 0/20"
+elseif __G.Difficulty == "Nightmare" then
+    canStartWave = "WAVE 1/50" or "WAVE 0/50"
+end
+
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
         warn("#1")
@@ -6,13 +17,13 @@ spawn(function ()
         local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
         print(Wave)
         wait(.1)
-        if Wave == "WAVE 0/40" or Wave == "WAVE 1/40" then
+        if Wave == canStartWave then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
             break
         elseif Wave == "WAVE --/--" then
             wait()
-        elseif Wave == "WAVE 0/20" or Wave == "WAVE 1/20" then
+        elseif Wave ~= canStartWave then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
             wait(1)
         else
@@ -51,3 +62,20 @@ spawn(function ()
         end
     end
 end) --## สำรอง
+
+spawn(function ()
+    while game:GetService("RunService").RenderStepped:Wait() do
+        local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
+        local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
+        if ResultsGUI.Visible == true then
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
+        end
+        print("WORKING...")
+        if ButtonGUI then
+            ButtonGUI:Destroy()
+        end
+        task.wait(.1)
+    end
+end)
