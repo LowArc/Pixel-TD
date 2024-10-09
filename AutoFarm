@@ -6,7 +6,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Ind
 local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
 ButtonGUI:Destroy()
 local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
-if Wave == "WAVE 0/40" or Wave == "Wave 1/40" then
+if Wave == "WAVE 0/40" or Wave == "WAVE 1/40" then
     spawn(function ()
         while game:GetService("RunService").RenderStepped:Wait() do
             if _G.AutoFarm then
