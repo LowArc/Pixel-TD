@@ -6,10 +6,12 @@ spawn(function ()
         local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
         print(Wave)
         wait(.1)
-        if Wave == "WAVE 0/40" or Wave == "WAVE 1/40" or Wave == "WAVE --/--" then
+        if Wave == "WAVE 0/40" or Wave == "WAVE 1/40" then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
             break
+        elseif Wave == "WAVE --/--" then
+        wait()
         elseif Wave == "WAVE 0/20" or Wave == "WAVE 1/20" then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
             wait(1)
@@ -26,10 +28,7 @@ spawn(function ()
                 local money = game.Players.LocalPlayer.leaderstats.Money.Value
                 local Time = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Time.Text
                 local PlacedUnits = game.Workspace.Game.Map.PlacedUnits
-                local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
-                if ResultsGUI.Visible == true then
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
-                end
+                print(money, Time, PlacedUnits:GetChildren())
                 if not PlacedUnits:FindFirstChild "Lord1" then
                     if money >= _G.StarterUnitCost then
                         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13205.0479, 588.547302, 2912.19604, 0.604914308, -0.219974771, 0.765303731, 0.341751218, 0.939790487, 0, -0.719225168, 0.261543483, 0.643669307))
@@ -42,9 +41,6 @@ spawn(function ()
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
                     end
-                else
-                    warn("#3")
-                    wait(1)
                 repeat
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(workspace:WaitForChild("Game"):WaitForChild("Map"):WaitForChild("PlacedUnits"):WaitForChild("Lord1"))
                     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(workspace:WaitForChild("Game"):WaitForChild("Map"):WaitForChild("PlacedUnits"):WaitForChild("Lord2"))
