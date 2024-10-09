@@ -1,4 +1,4 @@
-rint("Welcome to Arc Hub!!!")
+print("Welcome to Arc Hub!!!")
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
 local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
@@ -8,7 +8,7 @@ spawn(function ()
         warn("#1")
         wait(1)
         local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
-        if Wave == "WAVE 1/40" then
+        if Wave == "WAVE 0/40" or Wave == "WAVE 1/40" then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
             break
