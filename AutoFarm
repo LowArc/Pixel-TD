@@ -3,6 +3,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Ind
 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
 local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
 ButtonGUI:Destroy()
+warn("!?")
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
         warn("#1")
