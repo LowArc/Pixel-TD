@@ -53,13 +53,28 @@ spawn(function ()
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
                     end
+                if not PlacedUnits:FindFirstChild "Lord2" then
+                    if money >= _G.StarterUnitCost then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13197.5928, 588.618103, 2912.40747, 0.284692317, -0.0886694118, -0.954509377, 0.297367632, 0.954763055, 0, 0.911330163, -0.28384015, 0.298181146))
+                        wait(5)
+                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
+                    end
+                if not PlacedUnits:FindFirstChild "Lord2" then
+                    if money >= _G.StarterUnitCost then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13197.5928, 588.618103, 2912.40747, 0.284692317, -0.0886694118, -0.954509377, 0.297367632, 0.954763055, 0, 0.911330163, -0.28384015, 0.298181146))
+                        wait(5)
+                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
+                    end
+                end
+                end 
+                end
+                end
                 repeat
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(PlacedUnits:FindFirstChild("Lord1"))
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(PlacedUnits:FindFirstChild("Lord2"))
-                    task.wait(2)
+                    for _,v in ipairs(PlacedUnits:GetChildren()) do
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
+                        task.wait(.1)
+                    end
                 until _G.AutoFarm == false
-                end
-                end
             end)
         end
     end
@@ -72,25 +87,21 @@ spawn(function ()
 end)
 
 spawn(function ()
-    warn("SupBro")
-    wait(20)
-    local loop = nil
-    repeat
-        pcall(function ()
-            local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
-            local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
-            warn("Dafuge")
-            task.wait(1)
-            if ButtonGUI then
-                ButtonGUI:Destroy()
-            end
-            if ResultsGUI.Visible == true and ResultsGUI then
-                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
-                loop = true
-            else
-                warn("???")
-                wait(1)
-            end
-        end)
-    until loop == true
+    wait(5)
+    local loop = true
+    local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
+    local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
+    while loop do
+        task.wait(1)
+        if ButtonGUI then
+            ButtonGUI:Destroy()
+        end
+        if ResultsGUI.Visible == true and ResultsGUI then
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
+            loop = false
+        else
+            warn("???")
+            wait(1)
+        end
+    end
 end)
