@@ -70,9 +70,11 @@ spawn(function ()
                 end
                 repeat
                     for _,v in ipairs(PlacedUnits:GetChildren()) do
-                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
-                        task.wait(2)
-                        print(Time)
+                        if v then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
+                            task.wait(2)
+                            print(Time)
+                        end
                     end
                 until _G.AutoFarm == false
             end)
@@ -87,10 +89,9 @@ spawn(function ()
 end)
 
 spawn(function ()
-    local loop = true
     local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
     while game:GetService("RunService").RenderStepped:Wait() do
-        if ResultsGUI.Visible == true and ResultsGUI then
+        if ResultsGUI.Visible == true then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
             print("Replaying")
             break
