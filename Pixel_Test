@@ -16,18 +16,17 @@ spawn(function ()
     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
     wait(5)
     warn("Dahella")
-    repeat
-        pcall(function ()
-            local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
-            local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
-            warn("Dafuge")
-            if ResultsGUI.Visible == true then
-                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
-            else
-                warn("???")
-            end
-        end)
-    until _G.AutoFarm == false
+    while _G.AutoFarm do
+        local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
+        local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
+        warn("Dafuge")
+        if ResultsGUI.Visible == true then
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
+        else
+            warn("???")
+            wait((.1))
+        end
+    end
 end)
 
 spawn(function ()
@@ -83,3 +82,32 @@ spawn(function ()
         end
     end
 end) --## สำรอง
+
+spawn(function ()
+    warn("???A?D?ADW?D?AD")
+    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
+    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
+end)
+
+spawn(function ()
+    warn("SupBro")
+    local loop = nil
+    repeat
+        pcall(function ()
+            local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
+            local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
+            warn("Dafuge")
+            task.wait(.1)
+            if ButtonGUI then
+                ButtonGUI:Destroy()
+            end
+            if ResultsGUI.Visible == true then
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
+                loop = true
+            else
+                warn("???")
+                wait(.1)
+            end
+        end)
+    until loop == true
+end)
