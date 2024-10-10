@@ -13,7 +13,7 @@ end
 
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
-        warn("#1")
+        warn("Selecting Difficulties...")
         wait(1)
         local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
         print(Wave)
@@ -34,7 +34,7 @@ spawn(function ()
         end
     end
     while game:GetService("RunService").RenderStepped:Wait() do
-        warn("#2")
+        warn("Starting AutoFarm...")
         if _G.AutoFarm then
             pcall(function ()
                 local money = game.Players.LocalPlayer.leaderstats.Money.Value
@@ -53,20 +53,35 @@ spawn(function ()
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
                     end
+                if not PlacedUnits:FindFirstChild "Lord3" then
+                    if money >= _G.StarterUnitCost then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13213.1094, 586.26239, 2920.69092, 0.973837495, -0.117337622, 0.19460842, 0.119439796, 0.992841125, 0.0009386522, -0.193325251, 0.0223298669, 0.980880618))
+                        wait(5)
+                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord3"
+                    end
+                if not PlacedUnits:FindFirstChild "Lord4" then
+                    if money >= _G.StarterUnitCost then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13207.7832, 586.26239, 2905.61938, -0.31373474, 0.0399877727, -0.948668242, 0.123574637, 0.992334843, 0.000960927457, 0.941434979, -0.116929866, -0.316271394))
+                        wait(5)
+                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord4"
+                    end
+                end
+                end 
+                end
+                end
                 repeat
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(PlacedUnits:FindFirstChild("Lord1"))
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(PlacedUnits:FindFirstChild("Lord2"))
-                    task.wait(2)
+                    for _,v in ipairs(PlacedUnits:GetChildren()) do
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
+                        task.wait(.1)
+                    end
                 until _G.AutoFarm == false
-                end
-                end
             end)
         end
     end
 end) --## สำรอง
 
 spawn(function ()
-    warn("???A?D?ADW?D?AD")
+    print("AutoVote Running...")
     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
 end)
@@ -85,7 +100,6 @@ spawn(function ()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
             loop = false
         else
-            warn("???")
             wait(1)
         end
     end
