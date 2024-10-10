@@ -33,8 +33,8 @@ spawn(function ()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
         end
     end
+    warn("Starting AutoFarm...")
     while game:GetService("RunService").RenderStepped:Wait() do
-        warn("Starting AutoFarm...")
         if _G.AutoFarm then
             pcall(function ()
                 local money = game.Players.LocalPlayer.leaderstats.Money.Value
@@ -72,8 +72,6 @@ spawn(function ()
                     for _,v in ipairs(PlacedUnits:GetChildren()) do
                         if v then
                             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
-                            task.wait(2)
-                            print(Time)
                         end
                     end
                 end
