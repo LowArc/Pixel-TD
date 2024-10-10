@@ -68,13 +68,6 @@ spawn(function ()
                 end 
                 end
                 end
-                repeat
-                    for _,v in ipairs(PlacedUnits:GetChildren()) do
-                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
-                        task.wait(2)
-                        print(Time)
-                    end
-                until _G.AutoFarm == false
             end)
         end
     end
