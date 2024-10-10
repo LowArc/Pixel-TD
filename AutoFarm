@@ -90,12 +90,8 @@ spawn(function ()
     wait(5)
     local loop = true
     local ResultsGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results
-    local ButtonGUI = game.Players.LocalPlayer.PlayerGui.MainUI.Frames.Results.Main.Foreground.Buttons
     while loop do
         task.wait(1)
-        if ButtonGUI then
-            ButtonGUI:Destroy()
-        end
         if ResultsGUI.Visible == true and ResultsGUI then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
             loop = false
