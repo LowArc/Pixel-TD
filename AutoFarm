@@ -1,13 +1,18 @@
 print("Welcome to Arc Hub!!!")
 local canStartWave = nil
+local canStartWave1 = nil
 if _G.Difficulty == "Hard" then
     canStartWave = "WAVE 0/40"
+    canStartWave1 = "WAVE 1/40"
 elseif _G.Difficulty == "Medium" then
     canStartWave = "WAVE 0/30"
+    canStartWave1 = "WAVE 1/30"
 elseif _G.Difficulty == "Easy" then
     canStartWave = "WAVE 0/20"
+    canStartWave1 = "WAVE 1/20"
 elseif _G.Difficulty == "Nightmare" then
     canStartWave = "WAVE 0/50"
+    canStartWave1 = "WAVE 1/50"
 end
 
 
@@ -18,13 +23,13 @@ spawn(function ()
         local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
         print(Wave)
         wait(.1)
-        if Wave == canStartWave then
+        if Wave == canStartWave or Wave == canStartWave1 then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
             break
         elseif Wave == "WAVE --/--" then
             wait()
-        elseif Wave ~= canStartWave then
+        elseif Wave ~= canStartWave or Wave ~= canStartWave1 then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
             wait(1)
         else
