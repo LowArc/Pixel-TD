@@ -47,32 +47,28 @@ spawn(function ()
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord1"
                     end
-                if not PlacedUnits:FindFirstChild "Lord2" then
+                elseif not PlacedUnits:FindFirstChild "Lord2" then
                     task.wait()
                     if money >= _G.StarterUnitCost then
                         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13197.5928, 588.618103, 2912.40747, 0.284692317, -0.0886694118, -0.954509377, 0.297367632, 0.954763055, 0, 0.911330163, -0.28384015, 0.298181146))
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
                     end
-                if not PlacedUnits:FindFirstChild "Lord3" then
+                elseif not PlacedUnits:FindFirstChild "Lord3" then
                     task.wait()
                     if money >= _G.StarterUnitCost then
                         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13213.1094, 586.26239, 2920.69092, 0.973837495, -0.117337622, 0.19460842, 0.119439796, 0.992841125, 0.0009386522, -0.193325251, 0.0223298669, 0.980880618))
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord3"
                     end
-                if not PlacedUnits:FindFirstChild "Lord4" then
+                elseif not PlacedUnits:FindFirstChild "Lord4" then
                     task.wait()
                     if money >= _G.StarterUnitCost then
                         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13205.1855, 586.26239, 2895.40137, -0.617171466, 0.0739153922, -0.783349156, 0.117683478, 0.993050814, 0.000984033686, 0.777978182, -0.0915799215, -0.621581197))
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord4"
                     end
-                end
-                end 
-                end
-                end
-                repeat
+                else
                     for _,v in ipairs(PlacedUnits:GetChildren()) do
                         if v then
                             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
@@ -80,7 +76,7 @@ spawn(function ()
                             print(Time)
                         end
                     end
-                until _G.AutoFarm == false
+                end
             end)
         end
     end
