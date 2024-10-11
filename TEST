@@ -64,8 +64,8 @@ spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
-        wait(1)
-        local Difficulty = game.Players.LocalPlayer.PlayerGui.MainUI.Stats.Left.Difficulty.Value
+        wait(10)
+        local Difficulty = game.Players.LocalPlayer.PlayerGui.MainUI.Stats.Left.Difficulty.Text
         if Difficulty then
             if string.upper(_G.Difficulty) ~= Difficulty then
                 game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
