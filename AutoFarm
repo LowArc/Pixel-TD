@@ -1,37 +1,17 @@
 print("Welcome to Arc Hub!!!")
-local canStartWave = nil
-local canStartWave1 = nil
-if _G.Difficulty == "Hard" then
-    canStartWave = "WAVE 0/40"
-    canStartWave1 = "WAVE 1/40"
-elseif _G.Difficulty == "Medium" then
-    canStartWave = "WAVE 0/30"
-    canStartWave1 = "WAVE 1/30"
-elseif _G.Difficulty == "Easy" then
-    canStartWave = "WAVE 0/20"
-    canStartWave1 = "WAVE 1/20"
-elseif _G.Difficulty == "Nightmare" then
-    canStartWave = "WAVE 0/50"
-    canStartWave1 = "WAVE 1/50"
-end
 
 
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
         warn("Selecting Difficulties...")
-        wait(1)
-        local Wave = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text
-        print(Wave)
+        local Wave = tonumber(string.match(game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Wave.Text, "%d+"))
         wait(.1)
-        if Wave == canStartWave or Wave == canStartWave1 then
+        if Wave == 1 or Wave == 0 then
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
             break
-        elseif Wave == "WAVE --/--" then
+        elseif Wave == nil then
             wait()
-        elseif Wave ~= canStartWave or Wave ~= canStartWave1 then
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
-            wait(1)
         else
             warn("????")
             task.wait(10)
@@ -66,24 +46,11 @@ spawn(function ()
                         wait(5)
                         PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord3"
                     end
-                elseif not PlacedUnits:FindFirstChild "Lord4" then
-                    task.wait()
-                    if money >= _G.StarterUnitCost then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13205.1855, 586.26239, 2895.40137, -0.617171466, 0.0739153922, -0.783349156, 0.117683478, 0.993050814, 0.000984033686, 0.777978182, -0.0915799215, -0.621581197))
-                        wait(5)
-                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord4"
-                    end
-                elseif not PlacedUnits:FindFirstChild "Lord5" then
-                    task.wait()
-                    if money >= _G.StarterUnitCost then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13205.0479, 588.547302, 2912.19604, 0.604914308, -0.219974771, 0.765303731, 0.341751218, 0.939790487, 0, -0.719225168, 0.261543483, 0.643669307))
-                        wait(5)
-                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord5"
-                    end
                 else
                     for _,v in ipairs(PlacedUnits:GetChildren()) do
                         if v then
                             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
+                            wait(1)
                         end
                     end
                 end
@@ -94,8 +61,17 @@ end) --## สำรอง
 
 spawn(function ()
     print("AutoVote Running...")
-    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
-    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
+    while game:GetService("RunService").RenderStepped:Wait() do
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
+        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
+        wait(1)
+        local Difficulty = game.Players.LocalPlayer.PlayerGui.MainUI.Stats.Left.Difficulty.Value.Text
+        if Difficulty then
+            if string.upper(_G.Difficulty) ~= Difficulty then
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Haunted Graveyard-3", "Haunted Graveyard", "Repeat")
+            end
+        end
+    end
 end)
 
 spawn(function ()
