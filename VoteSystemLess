@@ -39,6 +39,7 @@ spawn(function ()
                     for _,v in ipairs(PlacedUnits:GetChildren()) do
                         if v then
                             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
+                            task.wait(1)
                         end
                     end
                 end
