@@ -1,4 +1,17 @@
 print("Welcome to Arc Hub!!!")
+_G.Teleport = true
+if _G.Teleport == true then
+    if game.PlaceId == 15939808257 then
+        local plr = game.Players.LocalPlayer
+        local char = plr.Character or plr.CharacterAdded:Wait()
+        if char then
+           char.HumanoidRootPart.CFrame = CFrame.new(-195.253525, 506.166351, -54.2872314, -0.326850981, -3.64183954e-08, -0.94507587, 8.47201562e-08, 1, -6.7835046e-08, 0.94507587, -1.02238928e-07, -0.326850981) 
+           task.wait(4)
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Haunted Graveyard-2")
+        end
+    end
+end
+
 
 spawn(function ()
     game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
