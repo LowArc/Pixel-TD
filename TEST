@@ -1,5 +1,17 @@
 print("Welcome to Arc Hub!!!")
 ---@diagnostic disable: undefined-global
+if _G.Teleport then
+    if game.PlaceId == 15939808257 then
+        local plr = game.Players.LocalPlayer
+        local char = plr.Character or plr.CharacterAdded:Wait()
+        if char then
+           char.HumanoidRootPart.CFrame = CFrame.new(-195.253525, 506.166351, -54.2872314, -0.326850981, -3.64183954e-08, -0.94507587, 8.47201562e-08, 1, -6.7835046e-08, 0.94507587, -1.02238928e-07, -0.326850981) 
+           task.wait(4)
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Haunted Graveyard-2")
+        end
+    end
+end
+
 
 spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
@@ -25,26 +37,16 @@ spawn(function ()
                 local money = game.Players.LocalPlayer.leaderstats.Money.Value
                 local Time = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Time.Text
                 local PlacedUnits = game.Workspace.Game.Map.PlacedUnits
-                if not PlacedUnits:FindFirstChild "Lord1" then
-                    task.wait()
+                for i = 1, _G.MaxPlace do
                     if money >= _G.StarterUnitCost then
                         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13205.0479, 588.547302, 2912.19604, 0.604914308, -0.219974771, 0.765303731, 0.341751218, 0.939790487, 0, -0.719225168, 0.261543483, 0.643669307))
-                        wait(5)
-                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord1"
+                        task.wait(5)
                     end
-                elseif not PlacedUnits:FindFirstChild "Lord2" then
-                    task.wait()
-                    if money >= _G.StarterUnitCost then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13197.5928, 588.618103, 2912.40747, 0.284692317, -0.0886694118, -0.954509377, 0.297367632, 0.954763055, 0, 0.911330163, -0.28384015, 0.298181146))
-                        wait(5)
-                        PlacedUnits:FindFirstChild(_G.UnitName).Name = "Lord2"
-                    end
-                else
-                    for _,v in ipairs(PlacedUnits:GetChildren()) do
-                        if v then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
-                            wait(1)
-                        end
+                end
+                for _,v in ipairs(PlacedUnits:GetChildren()) do
+                    if v then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("UpgradeUnit"):InvokeServer(v)
+                        wait(1)
                     end
                 end
             end)
