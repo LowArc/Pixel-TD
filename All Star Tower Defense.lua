@@ -1,25 +1,4 @@
-local Global_V = {}
-pcall(function()
-    local req = (syn and syn.request) or request
-    local GetDataFormServer = req({
-        Url = 'http://kangisloser.xyz/GetData',
-        Method = 'POST',
-        Headers = {
-            ["Content-Type"] = "application/json"
-        };
-        Body = game:GetService('HttpService'):JSONEncode({
-            GameId = tostring(game.PlaceId)
-        }),
-    })
-    local Body = game:GetService("HttpService"):JSONDecode(GetDataFormServer.Body)
-    Global_V = {
-        Version_script = Body.Version,
-        Script_enabled = Body.ScriptEnabled
-    }
-end)
-if not Global_V.Script_enabled then
-    return game.Players.LocalPlayer:Kick("Script was disabled.")
-end
+
 repeat
     wait()
 until game.Players and game.ReplicatedStorage and game.ReplicatedStorage:FindFirstChild("Lobby") and game:GetService("ReplicatedStorage"):FindFirstChild("Remotes"):FindFirstChild("Input")
