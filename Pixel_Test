@@ -38,14 +38,13 @@ spawn(function ()
                 local Time = game.Players.LocalPlayer.PlayerGui.MainUI.GameInfo.Time.Text
                 local PlacedUnits = game.Workspace.Game.Map.PlacedUnits
                 local UnitCount = 0
-                if UnitCount ~= _G.MaxPlace then
-                    for i = 1, _G.MaxPlace do
-                        if money >= _G.StarterUnitCost then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13197.5928, 588.618103, 2912.40747, 0.284692317, -0.0886694118, -0.954509377, 0.297367632, 0.954763055, 0, 0.911330163, -0.28384015, 0.298181146))
-                            task.wait(5)
-                            UnitCount = UnitCount + 1
-                            print("1")
-                        end
+                if not UnitCount == _G.MaxPlace then
+                    if money >= _G.StarterUnitCost then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, CFrame.new(-13197.5928, 588.618103, 2912.40747, 0.284692317, -0.0886694118, -0.954509377, 0.297367632, 0.954763055, 0, 0.911330163, -0.28384015, 0.298181146))
+                        UnitCount = UnitCount + 1
+                        task.wait(5)
+                        print("1")
+                        print(UnitCount)
                     end
                 else
                     for _,v in ipairs(PlacedUnits:GetChildren()) do
