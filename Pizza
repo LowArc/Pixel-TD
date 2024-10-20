@@ -53,7 +53,7 @@ spawn(function ()
     while game:GetService("RunService").RenderStepped:Wait() do
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
-        wait(1)
+        wait(2.5)
         local Difficulty = game.Players.LocalPlayer.PlayerGui.MainUI.Stats.Left.Difficulty.Value.Text
         if Difficulty then
             if string.upper(_G.Difficulty) ~= Difficulty then
