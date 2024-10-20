@@ -1,6 +1,5 @@
 print("Welcome to Arc Hub!!!")
 --// Teleport 
-_G.Teleport = true
 if _G.Teleport == true then
     if game.PlaceId == 15939808257 then
         local plr = game.Players.LocalPlayer
