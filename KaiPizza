@@ -14,10 +14,11 @@ if _G.Teleport == true then
 end
 
 --// AutoFarm
+
+local unitCount = 0
 spawn(function ()
     warn("Starting AutoFarm...")
     while game:GetService("RunService").RenderStepped:Wait() do
-        local unitCount = 0
         if _G.AutoFarm then
             local money = game.Players.LocalPlayer.leaderstats.Money.Value
             local PlacedUnits = game.Workspace.Game.Map.PlacedUnits
@@ -54,8 +55,6 @@ spawn(function ()
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
         wait(1)
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
         local Difficulty = game.Players.LocalPlayer.PlayerGui.MainUI.Stats.Left.Difficulty.Value.Text
         if Difficulty then
             if string.upper(_G.Difficulty) ~= Difficulty then
@@ -64,6 +63,10 @@ spawn(function ()
         end
     end
 end)
+
+--// AutoSkip & x2Speed
+game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
+game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
 
 --// AutoReplay
 spawn(function ()
