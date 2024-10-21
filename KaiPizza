@@ -94,15 +94,17 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Ind
 
 --// AutoClaimGifts
 _G.AutoClaimGift = true
-if _G.AutoClaimGift then
-    if game.PlaceId == 15939808257 then
-        wait(3)
-        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
-        print("Claimed DailyRewards!")
-        for i = 1, 9 do
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("GiftsService"):WaitForChild("RF"):WaitForChild("Claim"):InvokeServer(i)
-            task.wait()
-            print("ClaimedGift: " .. i)
+spawn(function ()
+    if _G.AutoClaimGift then
+        if game.PlaceId == 15939808257 then
+            wait(3)
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
+            print("Claimed DailyRewards!")
+            for i = 1, 9 do
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("GiftsService"):WaitForChild("RF"):WaitForChild("Claim"):InvokeServer(i)
+                task.wait()
+                print("ClaimedGift: " .. i)
+            end
         end
     end
-end
+end)
