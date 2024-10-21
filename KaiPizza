@@ -1,6 +1,3 @@
----@diagnostic disable: undefined-global
-
-
 _G.MaxPlace = 2
 _G.unitPos1 = CFrame.new(-2864.87988, 180.750778, -617.153198, 0.289822876, 0, -0.957080305, -0, 1, -0, 0.957080305, 0, 0.289822876)
 _G.unitPos2 = CFrame.new(-2865.28809, 180.776154, -611.860535, 0.842269242, 0, -0.539057016, -0, 1, -0, 0.539056957, 0, 0.842269361)
@@ -99,6 +96,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Ind
 _G.AutoClaimGift = true
 if _G.AutoClaimGift then
     if game.PlaceId == 15939808257 then
+        wait(1)
         game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
         for i = 1, 9 do
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("GiftsService"):WaitForChild("RF"):WaitForChild("Claim"):InvokeServer(i)
