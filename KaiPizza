@@ -41,6 +41,7 @@ spawn(function ()
                 print("Total Players: ".. PlayersInGame)
                 if PlayersInGame < _G.PartyAmount then
                     print("Lack of Player!")
+                    game.Players.LocalPlayer:Kick("มีรหัสหลุดเกม งั้นมึงก็หลุดด้วยไอโง่")
                  end
                 PlayersInGame = 0
             end
