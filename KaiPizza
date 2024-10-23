@@ -1,6 +1,10 @@
+---@diagnostic disable: undefined-global
+
+
 _G.MaxPlace = 2
 _G.unitPos1 = CFrame.new(-2864.87988, 180.750778, -617.153198, 0.289822876, 0, -0.957080305, -0, 1, -0, 0.957080305, 0, 0.289822876)
 _G.unitPos2 = CFrame.new(-2865.28809, 180.776154, -611.860535, 0.842269242, 0, -0.539057016, -0, 1, -0, 0.539056957, 0, 0.842269361)
+
 
 print("Welcome to Arc Hub!!!")
 --// Teleport 
@@ -104,6 +108,16 @@ spawn(function ()
                 task.wait()
                 print("ClaimedGift: " .. i)
             end
+        end
+    end
+end)
+
+
+--// SpamKillMonster
+spawn(function ()
+    while wait(.1) do
+        for _,v in pairs(game.Workspace.ClientEnemyModels:GetChildren()) do
+            v:Destroy()
         end
     end
 end)
