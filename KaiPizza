@@ -1,11 +1,3 @@
----@diagnostic disable: undefined-global
-
-
-_G.MaxPlace = 2
-_G.unitPos1 = CFrame.new(-2864.87988, 180.750778, -617.153198, 0.289822876, 0, -0.957080305, -0, 1, -0, 0.957080305, 0, 0.289822876)
-_G.unitPos2 = CFrame.new(-2865.28809, 180.776154, -611.860535, 0.842269242, 0, -0.539057016, -0, 1, -0, 0.539056957, 0, 0.842269361)
-
-
 print("Welcome to Arc Hub!!!")
 --// Teleport 
 if _G.Teleport == true then
@@ -108,6 +100,46 @@ spawn(function ()
                 task.wait()
                 print("ClaimedGift: " .. i)
             end
+        end
+    end
+end)
+
+--// AutoPartyMode
+local PlayersInGame = 0
+spawn(function ()
+    while _G.AutoPartyMode do
+        if game.PlaceId == 15939808257 then
+            local Players = game:GetService("Players"):GetChildren()
+            for _,v in ipairs(Players) do
+                PlayersInGame = PlayersInGame + 1
+                print("Total Players: ".. PlayersInGame)
+            end
+            if PlayersInGame == _G.PartyAmount then
+                wait(10)
+                local plr = game.Players.LocalPlayer
+                local char = plr.Character or plr.CharacterAdded:Wait()
+                if char then
+                    char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
+                    task.wait(4)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Freddy's Pizzaria-2")
+                end
+            else
+                print("Lack some player...")
+            end
+            PlayersInGame = 0
+            task.wait(10)
+        elseif game.PlaceId == 15939811130 then
+            task.wait(15)
+            local Players = game:GetService("Players"):GetChildren()
+            for _,v in ipairs(Players) do
+                PlayersInGame = PlayersInGame + 1
+                print("Total Players: ".. PlayersInGame)
+            end
+            if PlayersInGame ~= _G.PartyAmount then
+                print("Bye loser...")
+                game.Players.LocalPlayer:Kick("Lack of Player!")
+            end
+            PlayersInGame = 0
         end
     end
 end)
