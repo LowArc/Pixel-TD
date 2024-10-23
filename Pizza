@@ -14,9 +14,6 @@ spawn(function ()
             for _,v in ipairs(Players) do
                 local plr = game.Players.LocalPlayer
                 local char = plr.Character or plr.CharacterAdded:Wait()
-                if PlayersInGame < _G.PartyAmount then
-                    task.wait(15)
-                end
                 if char then
                     PlayersInGame = PlayersInGame + 1
                     print("Total Players: ".. PlayersInGame)
@@ -30,7 +27,9 @@ spawn(function ()
                 end
             else
                 print("Lack some player...")
-                task.wait(5)
+            end
+            if PlayersInGame < _G.PartyAmount then
+                task.wait(20)
             end
             PlayersInGame = 0
         elseif game.PlaceId == _G.PizzaPlaceId then
