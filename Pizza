@@ -9,44 +9,45 @@ print("Welcome to Arc Hub!!!")
 local PlayersInGame = 0
 spawn(function ()
     while _G.AutoPartyMode do
-        if game.PlaceId == 15939808257 then
-            local Players = game:GetService("Players"):GetChildren()
-            for _,v in ipairs(Players) do
-                local plr = game.Players.LocalPlayer
-                local char = plr.Character or plr.CharacterAdded:Wait()
-                if char then
-                    PlayersInGame = PlayersInGame + 1
-                    print("Total Players: ".. PlayersInGame)
+        pcall(function ()
+            if game.PlaceId == 15939808257 then
+                local Players = game:GetService("Players"):GetChildren()
+                for _,v in ipairs(Players) do
+                    local plr = game.Players.LocalPlayer
+                    local char = plr.Character or plr.CharacterAdded:Wait()
+                    if char then
+                        PlayersInGame = PlayersInGame + 1
+                    end
                 end
-            end
-            if PlayersInGame == _G.PartyAmount then
-                local plr = game.Players.LocalPlayer
-                local char = plr.Character or plr.CharacterAdded:Wait()
-                if char then
-                    char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
-                end
-            else
-                print("Lack some player...")
-            end
-            if PlayersInGame < _G.PartyAmount then
-                task.wait(20)
-            end
-            PlayersInGame = 0
-        elseif game.PlaceId == _G.PizzaPlaceId then
-            task.wait(30)
-            local Players = game:GetService("Players"):GetChildren()
-            for _,v in ipairs(Players) do
-                PlayersInGame = PlayersInGame + 1
                 print("Total Players: ".. PlayersInGame)
+                if PlayersInGame < _G.PartyAmount then
+                    print("Lack of Player!")
+                    task.wait(15)
+                elseif PlayersInGame == _G.PartyAmount then
+                    local plr = game.Players.LocalPlayer
+                    local char = plr.Character or plr.CharacterAdded:Wait()
+                    if char then
+                        char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
+                        wait(60)
+                    end
+                end
+                PlayersInGame = 0
+            elseif game.PlaceId == _G.PizzaPlaceId then
+                task.wait(30)
+                local Players = game:GetService("Players"):GetChildren()
+                for _,v in ipairs(Players) do
+                    PlayersInGame = PlayersInGame + 1
+                end
+                print("Total Players: ".. PlayersInGame)
+                if PlayersInGame < _G.PartyAmount then
+                    print("Lack of Player!")
+                    game.Players.LocalPlayer:Kick("มีรหัสหลุดเกม งั้นมึงก็หลุดด้วยไอโง่")
+                 end
+                PlayersInGame = 0
             end
-            if PlayersInGame ~= _G.PartyAmount then
-                print("Lack of Player!")
-            end
-            PlayersInGame = 0
-        end
-    end
+        end)
+    end 
 end)
-
 
 --// AutoClaimGifts
 _G.AutoClaimGift = true
