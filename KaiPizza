@@ -2,45 +2,58 @@ _G.MaxPlace = 2
 _G.unitPos1 = CFrame.new(-2864.87988, 180.750778, -617.153198, 0.289822876, 0, -0.957080305, -0, 1, -0, 0.957080305, 0, 0.289822876)
 _G.unitPos2 = CFrame.new(-2865.28809, 180.776154, -611.860535, 0.842269242, 0, -0.539057016, -0, 1, -0, 0.539056957, 0, 0.842269361)
 
-
-_G.PizzaPlaceId = 15939811130
 print("Welcome to Arc Hub!!!")
+_G.PixelTD = 15939808257
+_G.Pizzaria = 15939811130
 --// AutoPartyMode
+local function JoinPizzaria()
+    local plr = game.Players.LocalPlayer
+    local char = plr.Character or plr.CharacterAdded:Wait()
+    if char then
+        char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
+    end
+end
+
 local PlayersInGame = 0
 spawn(function ()
     while _G.AutoPartyMode do
+        if game.PlaceId == _G.PixelTD then
+            local Players = game:GetService("Players"):GetChildren()
+            for _,v in ipairs(Players) do
+                local plr = game.Players.LocalPlayer
+                local char = plr.Character or plr.CharacterAdded:Wait()
+                if char then
+                    PlayersInGame = PlayersInGame + 1
+                    task.wait(.1)
+                end
+            end
+            task.wait(.5)
+            PlayersInGame = 0
+        elseif game.PlaceId ~= _G.PixelTD then
+            break
+        end
+    end
+end)
+spawn(function ()
+    while _G.AutoPartyMode do
         pcall(function ()
-            if game.PlaceId == 15939808257 then
-                local Players = game:GetService("Players"):GetChildren()
-                for _,v in ipairs(Players) do
-                    local plr = game.Players.LocalPlayer
-                    local char = plr.Character or plr.CharacterAdded:Wait()
-                    if char then
-                        PlayersInGame = PlayersInGame + 1
-                    end
+            if game.PlaceId == _G.PixelTD then
+                task.wait(1)
+                if PlayersInGame == _G.PartyAmount then
+                   JoinPizzaria()
                 end
-                print("Total Players: ".. PlayersInGame)
-                if PlayersInGame < _G.PartyAmount then
-                    print("Lack of Player!")
-                    task.wait(15)
-                elseif PlayersInGame == _G.PartyAmount then
-                    local plr = game.Players.LocalPlayer
-                    local char = plr.Character or plr.CharacterAdded:Wait()
-                    if char then
-                        char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
-                        wait(60)
-                    end
-                end
-                PlayersInGame = 0
-            elseif game.PlaceId == _G.PizzaPlaceId then
+                repeat
+                    task.wait(.5)
+                until PlayersInGame == _G.PartyAmount
+                task.wait(35)
+                JoinPizzaria()
+            elseif game.PlaceId == _G.Pizzaria then
                 task.wait(30)
                 local Players = game:GetService("Players"):GetChildren()
                 for _,v in ipairs(Players) do
                     PlayersInGame = PlayersInGame + 1
                 end
-                print("Total Players: ".. PlayersInGame)
                 if PlayersInGame < _G.PartyAmount then
-                    print("Lack of Player!")
                     game.Players.LocalPlayer:Kick("มีรหัสหลุดเกม งั้นมึงก็หลุดด้วยไอโง่")
                  end
                 PlayersInGame = 0
@@ -53,7 +66,7 @@ end)
 _G.AutoClaimGift = true
 spawn(function ()
     if _G.AutoClaimGift then
-        if game.PlaceId == 15939808257 then
+        if game.PlaceId == _G.PixelTD then
             wait(3)
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
             print("Claimed DailyRewards!")
@@ -155,7 +168,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Ind
 _G.AutoClaimGift = true
 spawn(function ()
     if _G.AutoClaimGift then
-        if game.PlaceId == 15939808257 then
+        if game.PlaceId == _G.PixelTD then
             wait(3)
             game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
             print("Claimed DailyRewards!")
