@@ -22,9 +22,16 @@ spawn(function ()
             local PlacedUnits = game.Workspace.Game.Map.PlacedUnits
             if unitCount < _G.MaxPlace then
                 pcall(function ()
-                    if money >= _G.StarterUnitCost then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, _G.unitPos1)
-                        unitCount = unitCount + 1
+                    if not PlacedUnits:FindFirstChild(_G.UnitName) then
+                        if money >= _G.StarterUnitCost then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, _G.unitPos1)
+                            unitCount = unitCount + 1
+                        end
+                    else
+                        if money >= _G.StarterUnitCost then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("UnitService"):WaitForChild("RF"):WaitForChild("PlaceUnit"):InvokeServer(_G.UnitName, _G.unitPos1)
+                            unitCount = unitCount + 1
+                        end
                     end
                 end)
             else
