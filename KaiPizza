@@ -12,6 +12,65 @@ if _G.Teleport == true then
     end
 end
 
+--// AutoClaimGifts
+_G.AutoClaimGift = true
+spawn(function ()
+    if _G.AutoClaimGift then
+        if game.PlaceId == 15939808257 then
+            wait(3)
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
+            print("Claimed DailyRewards!")
+            for i = 1, 9 do
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("GiftsService"):WaitForChild("RF"):WaitForChild("Claim"):InvokeServer(i)
+                task.wait()
+                print("ClaimedGift: " .. i)
+            end
+        end
+    end
+end)
+
+
+--// AutoPartyMode
+local PlayersInGame = 0
+spawn(function ()
+    while _G.AutoPartyMode do
+        if game.PlaceId == 15939808257 then
+            local Players = game:GetService("Players"):GetChildren()
+            for _,v in ipairs(Players) do
+                PlayersInGame = PlayersInGame + 1
+                print("Total Players: ".. PlayersInGame)
+            end
+            if PlayersInGame == _G.PartyAmount then
+                wait(10)
+                local plr = game.Players.LocalPlayer
+                local char = plr.Character or plr.CharacterAdded:Wait()
+                if char then
+                    char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
+                    task.wait(4)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Freddy's Pizzaria-2")
+                end
+            else
+                print("Lack some player...")
+            end
+            PlayersInGame = 0
+            task.wait(30)
+        elseif game.PlaceId == 15939811130 then
+            task.wait(30)
+            local Players = game:GetService("Players"):GetChildren()
+            for _,v in ipairs(Players) do
+                PlayersInGame = PlayersInGame + 1
+                print("Total Players: ".. PlayersInGame)
+            end
+            if PlayersInGame ~= _G.PartyAmount then
+                print("Bye loser...")
+                game.Players.LocalPlayer:Kick("Lack of Player!")
+            end
+            PlayersInGame = 0
+        end
+    end
+end)
+
+
 --// AutoFarm
 local unitCount = 0
 spawn(function ()
@@ -100,46 +159,6 @@ spawn(function ()
                 task.wait()
                 print("ClaimedGift: " .. i)
             end
-        end
-    end
-end)
-
---// AutoPartyMode
-local PlayersInGame = 0
-spawn(function ()
-    while _G.AutoPartyMode do
-        if game.PlaceId == 15939808257 then
-            local Players = game:GetService("Players"):GetChildren()
-            for _,v in ipairs(Players) do
-                PlayersInGame = PlayersInGame + 1
-                print("Total Players: ".. PlayersInGame)
-            end
-            if PlayersInGame == _G.PartyAmount then
-                wait(10)
-                local plr = game.Players.LocalPlayer
-                local char = plr.Character or plr.CharacterAdded:Wait()
-                if char then
-                    char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
-                    task.wait(4)
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Freddy's Pizzaria-2")
-                end
-            else
-                print("Lack some player...")
-            end
-            PlayersInGame = 0
-            task.wait(30)
-        elseif game.PlaceId == 15939811130 then
-            task.wait(30)
-            local Players = game:GetService("Players"):GetChildren()
-            for _,v in ipairs(Players) do
-                PlayersInGame = PlayersInGame + 1
-                print("Total Players: ".. PlayersInGame)
-            end
-            if PlayersInGame ~= _G.PartyAmount then
-                print("Bye loser...")
-                game.Players.LocalPlayer:Kick("Lack of Player!")
-            end
-            PlayersInGame = 0
         end
     end
 end)
