@@ -103,3 +103,12 @@ spawn(function ()
         end
     end
 end)
+
+--// SpamKillMonster
+spawn(function ()
+    while wait(.1) do
+        for _,v in pairs(game.Workspace.ClientEnemyModels:GetChildren()) do
+            v:Destroy()
+        end
+    end
+end)
