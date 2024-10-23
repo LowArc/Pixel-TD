@@ -3,20 +3,79 @@ _G.unitPos1 = CFrame.new(-2864.87988, 180.750778, -617.153198, 0.289822876, 0, -
 _G.unitPos2 = CFrame.new(-2865.28809, 180.776154, -611.860535, 0.842269242, 0, -0.539057016, -0, 1, -0, 0.539056957, 0, 0.842269361)
 
 
+_G.PizzaPlaceId = 15939811130
 print("Welcome to Arc Hub!!!")
 --// Teleport 
-_G.Teleport = true
 if _G.Teleport == true then
     if game.PlaceId == 15939808257 then
         local plr = game.Players.LocalPlayer
         local char = plr.Character or plr.CharacterAdded:Wait()
         if char then
-           char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -331) 
+           char.HumanoidRootPart.CFrame = CFrame.new(-208, 508, -32)
            task.wait(4)
            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Freddy's Pizzaria-2")
         end
     end
 end
+
+--// AutoClaimGifts
+_G.AutoClaimGift = true
+spawn(function ()
+    if _G.AutoClaimGift then
+        if game.PlaceId == 15939808257 then
+            wait(3)
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
+            print("Claimed DailyRewards!")
+            for i = 1, 9 do
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("GiftsService"):WaitForChild("RF"):WaitForChild("Claim"):InvokeServer(i)
+                task.wait()
+                print("ClaimedGift: " .. i)
+            end
+        end
+    end
+end)
+
+
+--// AutoPartyMode
+local PlayersInGame = 0
+spawn(function ()
+    while _G.AutoPartyMode do
+        if game.PlaceId == 15939808257 then
+            local Players = game:GetService("Players"):GetChildren()
+            for _,v in ipairs(Players) do
+                PlayersInGame = PlayersInGame + 1
+                print("Total Players: ".. PlayersInGame)
+            end
+            if PlayersInGame == _G.PartyAmount then
+                wait(10)
+                local plr = game.Players.LocalPlayer
+                local char = plr.Character or plr.CharacterAdded:Wait()
+                if char then
+                    char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
+                    task.wait(4)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Freddy's Pizzaria-2")
+                end
+            else
+                print("Lack some player...")
+            end
+            PlayersInGame = 0
+            task.wait(30)
+        elseif game.PlaceId == _G.PizzaPlaceId then
+            task.wait(30)
+            local Players = game:GetService("Players"):GetChildren()
+            for _,v in ipairs(Players) do
+                PlayersInGame = PlayersInGame + 1
+                print("Total Players: ".. PlayersInGame)
+            end
+            if PlayersInGame ~= _G.PartyAmount then
+                print("Bye loser...")
+                game.Players.LocalPlayer:Kick("Lack of Player!")
+            end
+            PlayersInGame = 0
+        end
+    end
+end)
+
 
 --// AutoFarm
 local unitCount = 0
@@ -55,18 +114,18 @@ end)
 --// AutoVote & Difficulty
 _G.AutoVote = true
 spawn(function ()
-    print("AutoVote Running...")
-    while game:GetService("RunService").RenderStepped:Wait() do
-        while _G.AutoVote do
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
-            wait(1)
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
-            local Difficulty = game.Players.LocalPlayer.PlayerGui.MainUI.Stats.Left.Difficulty.Value.Text
-            if Difficulty then
-                if string.upper(_G.Difficulty) ~= Difficulty then
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Freddy's Pizzaria-3", "Freddy's Pizzaria", "Repeat")
+    if game.PlaceId == _G.PizzaPlaceId then
+        print("AutoVote Running...")
+        while game:GetService("RunService").RenderStepped:Wait() do
+            while _G.AutoVote do
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Vote"):InvokeServer(_G.Difficulty)
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("VotingService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer()
+                wait(2.5)
+                local Difficulty = game.Players.LocalPlayer.PlayerGui.MainUI.Stats.Left.Difficulty.Value.Text
+                if Difficulty then
+                    if string.upper(_G.Difficulty) ~= Difficulty then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Join"):InvokeServer("Freddy's Pizzaria-3", "Freddy's Pizzaria", "Repeat")
+                    end
                 end
             end
         end
@@ -90,13 +149,34 @@ spawn(function ()
     end
 end)
 
+--// AutoSkip & x2Speed
+game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("SpeedUp"):InvokeServer()
+game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("WaveService"):WaitForChild("RF"):WaitForChild("AutoSkip"):InvokeServer()
+
+
 --// AutoClaimGifts
 _G.AutoClaimGift = true
-if _G.AutoClaimGift then
-    if game.PlaceId == 15939808257 then
-        for i = 1, 9 do
-            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("GiftsService"):WaitForChild("RF"):WaitForChild("Claim"):InvokeServer(i)
-            task.wait()
+spawn(function ()
+    if _G.AutoClaimGift then
+        if game.PlaceId == 15939808257 then
+            wait(3)
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("DailyRewardService"):WaitForChild("RF"):WaitForChild("ClaimRewards"):InvokeServer()
+            print("Claimed DailyRewards!")
+            for i = 1, 9 do
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("GiftsService"):WaitForChild("RF"):WaitForChild("Claim"):InvokeServer(i)
+                task.wait()
+                print("ClaimedGift: " .. i)
+            end
         end
     end
-end
+end)
+
+
+--// SpamKillMonster
+spawn(function ()
+    while wait(.1) do
+        for _,v in pairs(game.Workspace.ClientEnemyModels:GetChildren()) do
+            v:Destroy()
+        end
+    end
+end)
