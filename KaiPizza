@@ -127,7 +127,7 @@ spawn(function ()
                 print("Lack some player...")
             end
             PlayersInGame = 0
-            task.wait(20)
+            task.wait(30)
         elseif game.PlaceId == 15939811130 then
             task.wait(30)
             local Players = game:GetService("Players"):GetChildren()
