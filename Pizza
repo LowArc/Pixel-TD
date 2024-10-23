@@ -52,8 +52,6 @@ spawn(function ()
                 local char = plr.Character or plr.CharacterAdded:Wait()
                 if char then
                     char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
-                    task.wait(4)
-                    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ElevatorService"):WaitForChild("RF"):WaitForChild("Start"):InvokeServer("Freddy's Pizzaria-2")
                 end
             else
                 print("Lack some player...")
