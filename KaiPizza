@@ -127,9 +127,9 @@ spawn(function ()
                 print("Lack some player...")
             end
             PlayersInGame = 0
-            task.wait(10)
+            task.wait(20)
         elseif game.PlaceId == 15939811130 then
-            task.wait(15)
+            task.wait(30)
             local Players = game:GetService("Players"):GetChildren()
             for _,v in ipairs(Players) do
                 PlayersInGame = PlayersInGame + 1
