@@ -30,11 +30,17 @@ spawn(function ()
         if game.PlaceId == 15939808257 then
             local Players = game:GetService("Players"):GetChildren()
             for _,v in ipairs(Players) do
-                PlayersInGame = PlayersInGame + 1
-                print("Total Players: ".. PlayersInGame)
+                local plr = game.Players.LocalPlayer
+                local char = plr.Character or plr.CharacterAdded:Wait()
+                if PlayersInGame < _G.PartyAmount then
+                    task.wait(15)
+                end
+                if char then
+                    PlayersInGame = PlayersInGame + 1
+                    print("Total Players: ".. PlayersInGame)
+                end
             end
             if PlayersInGame == _G.PartyAmount then
-                wait(30)
                 local plr = game.Players.LocalPlayer
                 local char = plr.Character or plr.CharacterAdded:Wait()
                 if char then
