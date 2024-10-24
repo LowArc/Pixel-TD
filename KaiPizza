@@ -10,7 +10,7 @@ local function JoinPizzaria()
     local plr = game.Players.LocalPlayer
     local char = plr.Character or plr.CharacterAdded:Wait()
     if char then
-        char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
+        char.HumanoidRootPart.CFrame = CFrame.new(-210, 507, -43)
     end
 end
 if _G.PixelTD then
