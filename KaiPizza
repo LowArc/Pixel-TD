@@ -13,8 +13,12 @@ local function JoinPizzaria()
         char.HumanoidRootPart.CFrame = CFrame.new(-210, 508, -32)
     end
 end
+if _G.PixelTD then
+    JoinPizzaria()
+elseif not _G.PixelTD then
+    wait(1)
+end
 
-JoinPizzaria()
 
 --// AutoClaimGifts
 _G.AutoClaimGift = true
