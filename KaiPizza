@@ -47,7 +47,9 @@ spawn(function ()
                 until PlayersInGame == _G.PartyAmount
                 task.wait(40)
                 JoinPizzaria()
-            elseif game.PlaceId == _G.Pizzaria then return end
+            elseif game.PlaceId == _G.Pizzaria then 
+                task.wait(500000000)
+            end
         end)
     end 
 end)
