@@ -14,45 +14,7 @@ local function JoinPizzaria()
     end
 end
 
-local PlayersInGame = 0
-spawn(function ()
-    while _G.AutoPartyMode do
-        if game.PlaceId == _G.PixelTD then
-            local Players = game:GetService("Players"):GetChildren()
-            for _,v in ipairs(Players) do
-                local plr = game.Players.LocalPlayer
-                local char = plr.Character or plr.CharacterAdded:Wait()
-                if char then
-                    PlayersInGame = PlayersInGame + 1
-                    task.wait(.1)
-                end
-            end
-            task.wait(.5)
-            PlayersInGame = 0
-        elseif game.PlaceId ~= _G.PixelTD then
-            break
-        end
-    end
-end)
-spawn(function ()
-    while _G.AutoPartyMode do
-        pcall(function ()
-            if game.PlaceId == _G.PixelTD then
-                task.wait(1)
-                if PlayersInGame == _G.PartyAmount then
-                   JoinPizzaria()
-                end
-                repeat
-                    task.wait(.5)
-                until PlayersInGame == _G.PartyAmount
-                task.wait(40)
-                JoinPizzaria()
-            elseif game.PlaceId == _G.Pizzaria then 
-                task.wait(500000000)
-            end
-        end)
-    end 
-end)
+JoinPizzaria()
 
 --// AutoClaimGifts
 _G.AutoClaimGift = true
