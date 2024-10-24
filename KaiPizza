@@ -45,19 +45,9 @@ spawn(function ()
                 repeat
                     task.wait(.5)
                 until PlayersInGame == _G.PartyAmount
-                task.wait(35)
+                task.wait(40)
                 JoinPizzaria()
-            elseif game.PlaceId == _G.Pizzaria then
-                task.wait(30)
-                local Players = game:GetService("Players"):GetChildren()
-                for _,v in ipairs(Players) do
-                    PlayersInGame = PlayersInGame + 1
-                end
-                if PlayersInGame < _G.PartyAmount then
-                    game.Players.LocalPlayer:Kick("มีรหัสหลุดเกม งั้นมึงก็หลุดด้วยไอโง่")
-                 end
-                PlayersInGame = 0
-            end
+            elseif game.PlaceId == _G.Pizzaria then return end
         end)
     end 
 end)
